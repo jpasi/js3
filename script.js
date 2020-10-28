@@ -1,50 +1,58 @@
-let nome = prompt("Nome")
-let sobre = prompt("Sobrenome")
-let idade = prompt("Idade")
-let es = prompt("Estado Civil")
-let cor = prompt("Cor Favorita")
-let pet = prompt("Tem pet?")
 
-let nome2 
-let sobre2 
-let idade2 
-let es2 
-let cor2 
-let pet2 
+var other = true
 
-if(confirm('Tem segunda pessoa?')){
-        nome2 = prompt("Nome da segunda pessoa")
-        sobre2 = prompt("Sobrenome da segunda pessoa")
-        idade2 = prompt("Idade da segunda pessoa")
-        es2 = prompt("Estado Civil da segunda pessoa")
-        cor2 = prompt("Cor Favorita da segunda pessoa")
-        pet2 = prompt("Tem pet? da segunda pessoa")
+let list = []
+let max = 0
 
-    } 
+function gente(nome, sobre, idade, cor){
+    this.nome = nome
+    this.sobre = sobre
+    this.idade = idade
+    this.cor = cor
+    
+}
 
-    if('Idade2 > idade'){
-        console.log(`${nome2} é maior que ${nome}`)
-    } else {
-        console.log(`${nome} é maior que ${nome2}`)
+
+   while (other === true){
+    list.push(new gente (prompt("Nome"),prompt("Sobrenome"),prompt("Idade")))
+           
+
+        if (confirm ('Tem mais?')) {
+            other = true
+        } else {
+            other = false
+        }
     }
 
-    
-let DadosP = new Object()
-    DadosP.Nome = nome
-    DadosP.Sobrenome = sobre
-    DadosP.Idade = idade
-    DadosP.Estado_Civil = es
-    DadosP.Cor_favorita = cor
-    DadosP.Tem_pet = pet 
+// Antes da aula de 27/10/2020
 
-console.table(DadosP)
+    console.log("Registros de:")
+for ( let i=0; i < list.length; i++)
+    console.log(list[i].nome)
 
-let DadosP2 = new Object()
-    DadosP2.Nome2 = nome2
-    DadosP2.Sobrenome2 = sobre2
-    DadosP2.Idade2 = idade2
-    DadosP2.Estado_Civil2 = es2
-    DadosP2.Cor_favorita2 = cor2
-    DadosP2.Tem_pet2 = pet2
+    console.log("A pessoa mais velha é")
+    for ( let i=0; i < list.length; i++) 
+        list[i].idade = Number(list[i].idade)
+    list.forEach(list => {
+        if (list.idade > max){
+            max = list.idade
+        }
+    })
+        let item = list.find(item => item.idade === max)
+        console.log(item.nome)
 
-console.table(DadosP2)
+// Despues da aula 
+
+    function familia(list) {
+        let esFamilia = [list[0]]
+
+        for(let persona of list.slice(1))
+        if(persona.sobre ===  esFamilia[0].sobre){
+            esFamilia = [persona]
+        
+        } else if (persona.sobre === esFamilia[0].sobre) {
+            esFamilia.push(registro)
+          }
+
+        return esFamilia
+    } 
