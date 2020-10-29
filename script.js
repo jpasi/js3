@@ -43,16 +43,45 @@ for ( let i=0; i < list.length; i++)
 
 // Despues da aula 
 
-    function familia(list) {
-        let esFamilia = [list[0]]
+function familia(list) {
+    let esFamilia = [ list ]
+    
 
-        for(let persona of list.slice(1))
-        if(persona.sobre ===  esFamilia[0].sobre){
+    for(let persona of list) {
+        if(persona.sobre === persona.sobre) {
             esFamilia = [persona]
-        
-        } else if (persona.sobre === esFamilia[0].sobre) {
-            esFamilia.push(registro)
-          }
+        }
+    for(let persona of list) {     
+        if (persona.sobre === esFamilia[0].sobre) {
+            esFamilia.push(persona)
+            
+        }    
+    }
+    }
+     return esFamilia 
+}
+    let fam = familia(list)
+    fam.shift()
+    console.log("As pessoas na lista de abaixo tem o mesmo sobrenome:")
+    for ( let i=0; i < fam.length; i++){
+        console.log(fam[i].nome)
+    }
 
-        return esFamilia
-    } 
+
+
+
+    function obterMaisNovo (list) {
+        let emaisnovo = [list[0] ]
+
+        for(let persona of list) {
+            if(persona.idade < emaisnovo[0].idade) {
+                emaisnovo = [persona]
+            }
+        }
+
+        return emaisnovo
+    }
+        let maisNovo = obterMaisNovo(list)
+        for(let pn of maisNovo) {
+        console.log(`A pessoa mais nova da lista é ${pn.nome}`)
+        }
